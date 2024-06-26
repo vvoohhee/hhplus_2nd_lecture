@@ -1,0 +1,13 @@
+spring:
+  application:
+      name: lecture
+
+  datasource:
+    driver-class-name:
+    url: jdbc:mysql://localhost:3306/clean_architecture
+    username: root
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create

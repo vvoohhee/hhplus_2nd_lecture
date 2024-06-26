@@ -1,14 +1,14 @@
 package io.hhplus.lecture.presentation.dto;
 
-public class LecturesDto {
+public class LectureApplyDto {
     public record Request(
-            long id
+            long userId,
+            long lectureSessionId
     ) {
     }
 
     public record Response(
-            long id,
-            String title
+            boolean isSuccess
     ) {
     }
 }
