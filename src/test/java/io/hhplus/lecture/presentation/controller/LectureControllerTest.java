@@ -1,7 +1,7 @@
 package io.hhplus.lecture.presentation.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.hhplus.lecture.presentation.dto.ApplyDto;
+import io.hhplus.lecture.presentation.dto.LectureApplyDto;
 import io.hhplus.lecture.presentation.dto.ApplyResultDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -28,9 +28,9 @@ public class LectureControllerTest {
     @DisplayName("특강 신청 컨트롤러 테스트")
     void applyTest() throws Exception {
         Long userId = 1L;
-        Long lectureId = 1L;
+        Long sessionId = 1L;
 
-        ApplyDto.Request request = new ApplyDto.Request(userId, lectureId);
+        LectureApplyDto.Request request = new LectureApplyDto.Request(userId, sessionId);
 
         MvcResult mvcResult = mockMvc.perform(post("/lectures/apply")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -39,13 +39,13 @@ public class LectureControllerTest {
                 .andReturn();
 
         String content = mvcResult.getResponse().getContentAsString();
-        ApplyDto.Response response = objectMapper.readValue(content, ApplyDto.Response.class);
+        LectureApplyDto.Response response = objectMapper.readValue(content, LectureApplyDto.Response.class);
 
-        assertThat(response).isEqualTo(new ApplyDto.Response(true));
+        assertThat(response).isEqualTo(new LectureApplyDto.Response(true));
     }
 
     @Test
-    @DisplayName("특강 신청 완료 여부 조회 컨트롤러 테스트")
+    @DisplayName("특강 신청 결과 조회 컨트롤러 테스트")
     void applyResultTest() throws Exception {
         Long userId = 1L;
 
